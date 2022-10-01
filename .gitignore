@@ -3,3 +3,7 @@
 ################################################################################
 
 /.vs
+/LibrarySample/LibrarySample/obj/Debug
+/LibrarySample/.vs/LibrarySample/v16
+/LibrarySample/packages
+/LibrarySample/Sample.Tests/obj/Debug
