@@ -16,7 +16,7 @@ pipeline {
         pollSCM 'H * * * *'
     }
     stages {
-        stage('This is a new 4 test!') {
+        stage('This is a new 5 test!') {
             steps {
                 script {
                     print 'Hello good World!'
