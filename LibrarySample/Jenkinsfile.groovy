@@ -81,19 +81,21 @@ stage ("Run Tests") {
                     bat "\"${tool 'VSTest-2019'}\" /platform:x64 \"${fullName}\" /logger:trx /inIsolation /ResultsDirectory:TestResults"
                         }
                  }
+                            // Runs the tests in parallel
+            parallel tests
              }
          }
        }
 
 
 
-     //  stage ("Convert Test Output") {
-  //  steps {
-  //      script {
-  //          mstest testResultsFile:"TestResults/**/*.trx", failOnError: true, keepLongStdio: true
-   //     }
-   // }
-//} 
+       stage ("Convert Test Output") {
+    steps {
+        script {
+            mstest testResultsFile:"TestResults/**/*.trx", failOnError: true, keepLongStdio: true
+        }
+    }
+} 
 
 
     }
