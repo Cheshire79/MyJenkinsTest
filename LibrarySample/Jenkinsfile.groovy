@@ -59,6 +59,18 @@ pipeline {
                     """
             }
         }
+        stage ("Run Tests") {
+           steps {
+                script {
+               // Find all the Test dlls that were built.
+                     def testAntPath = "**/bin/**/*.Tests.dll"
+                     findFiles(glob: testAntPath).each { f ->
+                     String fullName = f
+                 }
+             }
+         }
+     }
+ }
     
 
 
