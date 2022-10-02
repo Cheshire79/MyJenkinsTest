@@ -9,6 +9,8 @@ namespace Sample.Tests
 		[TestMethod]
 		public void TestMethod1()
 		{
+			string result = " dfg";
+			Assert.IsNotNull(result);
 		}
 	}
 }
