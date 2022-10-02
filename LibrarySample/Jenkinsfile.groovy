@@ -60,32 +60,18 @@ pipeline {
             }
         }
 
-
-        stage ("Run Tests") {
-    steps {
-        script {
-            // Clean up any old test output from before so it doesn't contaminate this run.
-            bat "IF EXIST TestResults rmdir /s /q TestResults"
- 
-            // The collection of tests to the work to do
-            def tests = [:]
- 
-            // Find all the Test dlls that were built.
-            def testAntPath = "**/bin/**/*.Tests.dll"
-            findFiles(glob: testAntPath).each { f ->
-                String fullName = f
- 
-                // Add a command to the map to run that test.
-                tests["${fullName}"] = {
-                    bat "\"${tool 'VSTest 2019'}\" /platform:x64 \"${fullName}\" /logger:trx /inIsolation /ResultsDirectory:TestResults"
-                }
-            }
-            // Runs the tests in parallel
-            parallel tests
- 
-        }
-    }
-}
+stage ("Run Tests") {
+     steps {
+         script {
+             // Find all the Test dlls that were built.
+             def testAntPath = "**/bin/**/*.Tests.dll"
+             findFiles(glob: testAntPath).each { f ->
+                 String fullName = f
+                 }
+             }
+         }
+     }
+ }
 
 
     }
