@@ -63,10 +63,18 @@ pipeline {
 stage ("Run Tests") {
      steps {
          script {
+
+                     // Clean up any old test output from before so it doesn't contaminate this run.
+            bat "IF EXIST TestResults rmdir /s /q TestResults"
+ 
+            // The collection of tests to the work to do
+            def tests = [:]
+
              // Find all the Test dlls that were built.
              def testAntPath = "**/bin/**/*.Tests.dll"
              findFiles(glob: testAntPath).each { f ->
                  String fullName = f
+                  echo "Found tests: ${fullName}"
                  }
              }
          }
