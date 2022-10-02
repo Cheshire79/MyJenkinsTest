@@ -75,6 +75,11 @@ stage ("Run Tests") {
              findFiles(glob: testAntPath).each { f ->
                  String fullName = f
                   echo "Found tests: ${fullName}"
+
+                                // Add a command to the map to run that test.
+                tests["${fullName}"] = {
+                    bat "\"${tool 'VSTest-2019'}\" /platform:x64 \"${fullName}\" /logger:trx /inIsolation /ResultsDirectory:TestResults"
+  
                  }
              }
          }
