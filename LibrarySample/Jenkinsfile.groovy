@@ -30,6 +30,7 @@ pipeline {
                     // Search the repository for a file ending in .sln.
                     findFiles(glob: '**').each {
                         def path = it.toString();
+                        echo "Found solution: ${path}"
                         if(path.toLowerCase().endsWith('.sln')) {
                             slnFile = path;
                         }
