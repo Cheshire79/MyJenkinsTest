@@ -87,14 +87,19 @@ stage ("Run Tests") {
 
 
 
-       stage ("Convert Test Output") {
-    steps {
-        script {
-            mstest testResultsFile:"TestResults/**/*.trx", failOnError: true, keepLongStdio: true
-        }
+     //  stage ("Convert Test Output") {
+  //  steps {
+  //      script {
+  //          mstest testResultsFile:"TestResults/**/*.trx", failOnError: true, keepLongStdio: true
+   //     }
+   // }
+//} 
+
+
     }
-} 
-
-
+    post {
+        always {
+            junit 'build/reports/**/*.xml'
+        }
     }
 }
