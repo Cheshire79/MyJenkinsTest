@@ -12,5 +12,12 @@ namespace Sample.Tests
 			string result = " dfg";
 			Assert.IsNotNull(result);
 		}
+
+		[TestMethod]
+		public void TestMethod2()
+		{
+			string result = null;
+			Assert.IsNotNull(result);
+		}
 	}
 }
