@@ -27,6 +27,12 @@ pipeline {
                             }
 
 
+                            withCredentials([usernamePassword(credentialsId: 'password1', passwordVariable: 'pass', usernameVariable: 'user')]) {
+    // the code here can access $pass and $user
+     echo "My secret text is '${pass}'  and '${user}'"
+}
+
+
                 }
             }
         }
