@@ -21,8 +21,12 @@ pipeline {
                 script {
                     print 'Hello good World!'
 
-                    withCredentials([string(credentialsId: 'secret_test1', variable: 'SECRET')]) { //set SECRET with the credential content
+
+                          withCredentials([string(credentialsId: 'secret_test1', variable: 'SECRET')]) { //set SECRET with the credential content
         echo "My secret text is '${SECRET}'"
+                            }
+
+
                 }
             }
         }
