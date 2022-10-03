@@ -16,10 +16,13 @@ pipeline {
         pollSCM 'H * * * *'
     }
     stages {
-        stage('This is a new 5 test!') {
+        stage('This is a new 6 test!') {
             steps {
                 script {
                     print 'Hello good World!'
+
+                    withCredentials([string(credentialsId: 'secret_test1', variable: 'SECRET')]) { //set SECRET with the credential content
+        echo "My secret text is '${SECRET}'"
                 }
             }
         }
@@ -78,7 +81,7 @@ stage ("Run Tests") {
 
                                 // Add a command to the map to run that test.
                 tests["${fullName}"] = {
-                    bat "\"${tool 'VSTest-2019'}\" /platform:x64 \"${fullName}\" /logger:trx /inIsolation "
+                    bat "\"${tool 'VSTest-2019'}\" /platform:x64 \"${fullName}\" /logger:trx /inIsolation /ResultsDirectory:TestResults"
                         }
                  }
                             // Runs the tests in parallel
